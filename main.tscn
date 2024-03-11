@@ -1,0 +1,88 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcxnrboxj6h10"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_x64ne"]
+
+[node name="Controller" type="Node"]
+script = ExtResource("1_x64ne")
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1232.0
+offset_bottom = 736.0
+
+[node name="Input_good_name" type="LineEdit" parent="GUI"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 96.0
+offset_right = 480.0
+offset_bottom = 144.0
+placeholder_text = "cargo name"
+
+[node name="Button_add_good" type="Button" parent="GUI"]
+layout_mode = 2
+offset_left = 208.0
+offset_top = 160.0
+offset_right = 292.0
+offset_bottom = 191.0
+text = "Add Good
+"
+
+[node name="ScrollContainer_goods" type="ScrollContainer" parent="GUI"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 224.0
+offset_right = 560.0
+offset_bottom = 640.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBox_goods" type="VBoxContainer" parent="GUI/ScrollContainer_goods"]
+layout_mode = 2
+
+[node name="ScrollContainer_ships" type="ScrollContainer" parent="GUI"]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 224.0
+offset_right = 1168.0
+offset_bottom = 624.0
+vertical_scroll_mode = 2
+
+[node name="VBox_ships" type="VBoxContainer" parent="GUI/ScrollContainer_ships"]
+layout_mode = 2
+
+[node name="Spin_cargo_holds" type="SpinBox" parent="GUI"]
+layout_mode = 0
+offset_left = 992.0
+offset_top = 96.0
+offset_right = 1075.06
+offset_bottom = 127.0
+min_value = 1.0
+max_value = 8.0
+value = 1.0
+
+[node name="Input_ship_name" type="LineEdit" parent="GUI"]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 96.0
+offset_right = 976.0
+offset_bottom = 144.0
+placeholder_text = "ship name"
+
+[node name="Button_add_ship" type="Button" parent="."]
+offset_left = 848.0
+offset_top = 176.0
+offset_right = 925.0
+offset_bottom = 207.0
+text = "Add Ship"
+
+[node name="Button_test" type="Button" parent="."]
+offset_left = 560.0
+offset_top = 16.0
+offset_right = 601.0
+offset_bottom = 47.0
+text = "Test"
+
+[connection signal="pressed" from="GUI/Button_add_good" to="." method="_add_new_good"]
+[connection signal="pressed" from="Button_add_ship" to="." method="_add_new_ship"]
+[connection signal="pressed" from="Button_test" to="." method="_test_function"]

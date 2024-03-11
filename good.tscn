@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd35ek6us5dnf"]
+
+[ext_resource type="Script" path="res://good.gd" id="1_ikoit"]
+
+[node name="Good" type="Control"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 432.0
+offset_bottom = 64.0
+script = ExtResource("1_ikoit")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_right = 1232.0
+offset_bottom = 32.0
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label_name" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+clip_text = true
+
+[node name="Input_demand" type="LineEdit" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+placeholder_text = "Demand"
+
+[node name="Label_unmet" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "unmet "
+
+[node name="Label_ships" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "assigned ships"
+
+[node name="Button_delete" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = "X"
+
+[connection signal="toggled" from="HBoxContainer/CheckBox" to="." method="_on_selection_toggled"]
+[connection signal="pressed" from="HBoxContainer/Button_delete" to="." method="_delete"]

@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://2mn76c3fceum"]
+
+[ext_resource type="Script" path="res://ship.gd" id="1_ivpsv"]
+
+[node name="Ship" type="Control"]
+custom_minimum_size = Vector2(403, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 432.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+script = ExtResource("1_ivpsv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_right = 431.0
+offset_bottom = 16.0
+grow_vertical = 2
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label_name" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+clip_text = true
+
+[node name="Spin_roundtrip" type="SpinBox" parent="HBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 50.0
+value = 1.0
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
+layout_mode = 2
+selected = 0
+allow_reselect = true
+
+[node name="Button_delete" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+text = "X"
+
+[connection signal="toggled" from="HBoxContainer/CheckBox" to="." method="_on_selection_toggled"]
+[connection signal="value_changed" from="HBoxContainer/Spin_roundtrip" to="." method="_on_roundtrip_changed"]
+[connection signal="pressed" from="HBoxContainer/Button_delete" to="." method="_delete"]
