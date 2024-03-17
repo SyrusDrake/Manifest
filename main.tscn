@@ -15,9 +15,18 @@ offset_bottom = 736.0
 layout_mode = 0
 offset_left = 32.0
 offset_top = 96.0
-offset_right = 480.0
+offset_right = 336.0
 offset_bottom = 144.0
 placeholder_text = "cargo name"
+
+[node name="Input_demand" type="LineEdit" parent="GUI"]
+layout_mode = 2
+offset_left = 352.0
+offset_top = 96.0
+offset_right = 464.0
+offset_bottom = 144.0
+text = "0"
+placeholder_text = "demand/min"
 
 [node name="Button_add_good" type="Button" parent="GUI"]
 layout_mode = 2
@@ -31,9 +40,9 @@ text = "Add Good
 [node name="ScrollContainer_goods" type="ScrollContainer" parent="GUI"]
 layout_mode = 0
 offset_left = 48.0
-offset_top = 224.0
-offset_right = 560.0
-offset_bottom = 640.0
+offset_top = 240.0
+offset_right = 512.0
+offset_bottom = 656.0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
@@ -82,6 +91,14 @@ offset_top = 16.0
 offset_right = 601.0
 offset_bottom = 47.0
 text = "Test"
+
+[node name="Button_load" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 32)
+offset_left = 560.0
+offset_top = 368.0
+offset_right = 592.0
+offset_bottom = 400.0
+text = ">"
 
 [connection signal="pressed" from="GUI/Button_add_good" to="." method="_add_new_good"]
 [connection signal="pressed" from="Button_add_ship" to="." method="_add_new_ship"]

@@ -44,4 +44,5 @@ layout_mode = 2
 text = "X"
 
 [connection signal="toggled" from="HBoxContainer/CheckBox" to="." method="_on_selection_toggled"]
+[connection signal="text_changed" from="HBoxContainer/Input_demand" to="." method="_on_input_demand_changed"]
 [connection signal="pressed" from="HBoxContainer/Button_delete" to="." method="_delete"]

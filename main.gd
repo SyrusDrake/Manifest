@@ -6,7 +6,6 @@ var goods_list = {}
 var cur_selected_ship: String
 var cur_selected_good: String
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -49,17 +48,19 @@ func _delete_ship(ship_to_delete) -> void:
 			
 func _add_new_good() -> void:
 	var good_name = $GUI/Input_good_name.get_text()
+	var good_amount = float($GUI/Input_demand.get_text())
 	if good_name.is_empty():
 		print('empty string')
 	elif good_name in goods_list:
 		print('good already exists')
 	else:
 		goods_list[good_name] = good_scene.instantiate()
-		goods_list[good_name].setup(good_name, 4)
+		goods_list[good_name].setup(good_name, good_amount)
 		$GUI/ScrollContainer_goods/VBox_goods.add_child(goods_list[good_name])
 		goods_list[good_name].sig_good_selection.connect(_select_good.bind())
 		goods_list[good_name].sig_delete_good.connect(_delete_good.bind())
 		$GUI/Input_good_name.clear()
+		$GUI/Input_demand.clear()
 
 func _select_good(selected_good, is_selected) -> void:
 	if is_selected:
@@ -78,5 +79,10 @@ func _delete_good(good_to_delete) -> void:
 		cur_selected_good = ''
 
 func _test_function() -> void:
-	if cur_selected_ship != '':
-		ship_list[cur_selected_ship].load_cargo('Cotton', 0.375)
+	if cur_selected_good != ""&&cur_selected_ship != "":
+		var good_to_load = goods_list[cur_selected_good]
+		var target_ship = ship_list[cur_selected_ship]
+		var amount_transported = target_ship.load_cargo(good_to_load.good_name, good_to_load.demand_remaining)
+		good_to_load.load_on_ship(target_ship.name, amount_transported)
+	else:
+		print('select good and ship')

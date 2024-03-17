@@ -37,7 +37,6 @@ value = 1.0
 
 [node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
 layout_mode = 2
-selected = 0
 allow_reselect = true
 
 [node name="Button_delete" type="Button" parent="HBoxContainer"]
